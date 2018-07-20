@@ -1,30 +1,9 @@
-import React,{Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import{HeaderWarpper,Logo,Nav,NavItem,NavInput,Additon,Button,SearchWarpper} from './style'
-class Header extends Component{
-    // constructor(props){
-    //     super(props);
-    //     // this.state={
-    //     //     focused:false
-    //     // }
-    //     this.handleFocus = this.handleFocus.bind(this)
-    //     this.handleBlur = this.handleBlur.bind(this)
-
-    // }
-    // handleFocus(){
-    //     this.setState({
-    //         focused:true
-    //     })
-
-    // }
-    // handleBlur(){
-    //     this.setState({
-    //         focused:false
-    //     })  
-    // }
-    render(){
-        return(
+import{HeaderWarpper,Logo,Nav,NavItem,NavInput,Additon,Button,SearchWarpper} from './style';
+const Header = (props)=>{
+    return(
             <HeaderWarpper>
                 <Logo href="/"/>
                 <Nav>
@@ -34,13 +13,13 @@ class Header extends Component{
                     <NavItem className="right">登录</NavItem>
                     <SearchWarpper>
                         <CSSTransition timeout={200}
-                            in={this.props.focused}
+                            in={props.focused}
                             classNames="side">
-                            <NavInput className={this.props.focused?'focused':''}
-                                onFocus={this.props.handleFocus}
-                                onBlur={this.props.handleBlur}/>
+                            <NavInput className={props.focused?'focused':''}
+                                onFocus={props.handleFocus}
+                                onBlur={props.handleBlur}/>
                         </CSSTransition>
-                        <i className={this.props.focused?'focused iconfont':'iconfont'}>&#xe6cf;</i>
+                        <i className={props.focused?'focused iconfont':'iconfont'}>&#xe6cf;</i>
                     </SearchWarpper>
                 </Nav>
                 <Additon>
@@ -48,8 +27,7 @@ class Header extends Component{
                     <Button className="writting">注册</Button>
                 </Additon>
             </HeaderWarpper>
-        )
-    }
+    )
 }
 const mapStateToProps = (state)=>{
     return{
