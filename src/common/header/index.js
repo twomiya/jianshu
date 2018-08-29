@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 import {actionCreators} from './store';
+import {actionCreators as loginActionCreators} from '../../pages/login/store';
 import{HeaderWarpper,Logo,Nav,NavItem,NavInput,Additon,Button,SearchWarpper,SearchInfo,SearchInfoTitle,SearchInfoSwitch,SearchInfoList,SearchInfoItem} from './style';
 
 class Header extends Component{
@@ -40,12 +42,17 @@ class Header extends Component{
     render(){
         return(
             <HeaderWarpper>
-                <Logo href="/"/>
+                <Link to="/">
+                    <Logo />
+                </Link>
                 <Nav>
                     <NavItem className="left active">首页</NavItem>
                     <NavItem className="left">下载App</NavItem>
                     <NavItem className="right"><i className="iconfont">&#xe636;</i></NavItem>
-                    <NavItem className="right">登录</NavItem>
+                    {this.props.login?
+                    <NavItem className="right" onClick={this.props.logout}>退出</NavItem>:
+                    <Link to="/login"><NavItem className="right">登录</NavItem></Link>}
+                    
                     <SearchWarpper>
                         <CSSTransition timeout={200}
                             in={this.props.focused}
@@ -59,7 +66,7 @@ class Header extends Component{
                     </SearchWarpper>
                 </Nav>
                 <Additon>
-                    <Button className="reg"><i className="iconfont">&#xe615;</i>写文章</Button>
+                   <Link to="/write"> <Button className="reg"><i className="iconfont">&#xe615;</i>写文章</Button></Link>
                     <Button className="writting">注册</Button>
                 </Additon>
             </HeaderWarpper>
@@ -73,7 +80,8 @@ const mapStateToProps = (state)=>{
         focused:state.getIn(['header','focused']),
         list:state.getIn(['header','list']),
         page:state.getIn(['header','page']),
-        mouseIn: state.getIn(['header','mouseIn'])
+        mouseIn: state.getIn(['header','mouseIn']),
+        login:state.getIn(['login','login'])
     }
 
 }
@@ -94,6 +102,9 @@ const mapDispatchToProps = (dispatch)=>{
         },
         handleLeave(){
             dispatch(actionCreators.mouseLeave())
+        },
+        logout(){
+            dispatch(loginActionCreators.logout())
         }
 
     }
