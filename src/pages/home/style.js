@@ -93,10 +93,8 @@ export const RecommendItem = styled.div`
 
 export const WriterWrapper = styled.div`
 	width: 278px;
-	border: 1px solid #dcdcdc;
 	border-radius: 3px;
 	height: 300px;
-	line-height: 300px;
 	text-align: center;
 `;
 
@@ -123,4 +121,62 @@ export const BackTop = styled.div`
 	border: 1px solid #ccc;
 	font-size: 14px;
 	cursor:pointer;
+`
+export const WriterTittle = styled.div`
+	text-align: left;
+	span{
+		font-size: 14px;
+    	color: #969696;
+	}
+	.page-change{
+		float: right;
+		display: inline-block;
+		font-size: 14px;
+		color: #969696;
+	}
+
+`
+export const WriterList = styled.div`
+	margin-top:15px;
+	line-height:20px;
+`
+export const WriterOne = styled.div`
+	margin: 10px 0;
+	.imgLeft{
+		float: left;
+		width: 48px;
+		height: 48px;
+		margin-right: 10px;
+		display: block;
+    	cursor: pointer;
+		img {
+			width: 100%;
+			height: 100%;
+			border: 1px solid #ddd;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+	}
+	.follow{
+		float: right;
+		margin-top: 5px;
+		padding: 0;
+		font-size: 13px;
+		color: #42c02e;
+		font-weight: 400;
+	}
+	.name{
+		padding-top: 5px;
+		margin-right: 160px;
+		font-size: 14px;
+		display: block;
+		box-sizing: border-box;
+	}
+	p{
+		margin-top: 2px;
+		font-size: 12px;
+		color: #969696;
+		margin-right: 54px;
+		box-sizing: border-box;
+	}
 `
